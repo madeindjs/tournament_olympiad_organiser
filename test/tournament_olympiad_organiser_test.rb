@@ -29,18 +29,15 @@ class TournamentOlympiadOrganiserTest < Minitest::Test
     tournament.add_games 'A', 'B'
 
     expected = [
-      {
-        players: ['Alexandre', 'Lorène', ],
-        game: 'A'
-      },
-      {
-        players: ['Alexandre', 'Jean-Luc'],
-        game: 'B'
-      },
-      {
-        players: ['Lorène', 'Jean-Luc', ],
-        game: 'A'
-      },
+      [
+        {players:["Alexandre", "Lorène"], game:"A"}
+      ],
+      [
+        {players:["Alexandre", "Jean-Luc"], game:"A"}
+      ],
+      [
+        {players:["Jean-Luc", "Lorène"], game:"A"}
+      ]
     ]
 
     assert_equal expected, tournament.get_organization
