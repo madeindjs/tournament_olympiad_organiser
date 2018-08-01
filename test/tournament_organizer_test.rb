@@ -1,13 +1,13 @@
 require "test_helper"
 
-class TournamentOrganiserTest < Minitest::Test
+class TournamentOrganizerTest < Minitest::Test
   def test_that_it_has_a_version_number
-    refute_nil ::TournamentOrganiser::VERSION
+    refute_nil ::TournamentOrganizer::VERSION
   end
 
 
   def test_unique_player
-    tournament = TournamentOrganiser::Tournament.new
+    tournament = TournamentOrganizer::Tournament.new
 
     tournament.add_players 'Alexandre', 'Alexandre'
     assert_equal 1, tournament.players.count
@@ -15,7 +15,7 @@ class TournamentOrganiserTest < Minitest::Test
 
 
   def test_unique_game
-    tournament = TournamentOrganiser::Tournament.new
+    tournament = TournamentOrganizer::Tournament.new
 
     tournament.add_games 'A', 'A'
     assert_equal 1, tournament.games.count
@@ -23,8 +23,7 @@ class TournamentOrganiserTest < Minitest::Test
 
 
   def test_get_organization
-
-    tournament = TournamentOrganiser::Tournament.new
+    tournament = TournamentOrganizer::Tournament.new
     tournament.add_players 'Alexandre', 'Lorène', 'Jean-Luc'
     tournament.add_games 'A', 'B'
 
@@ -44,8 +43,34 @@ class TournamentOrganiserTest < Minitest::Test
   end
 
 
+
+  def test_get_organization_for_bigger_tournament
+    tournament = TournamentOrganizer::Tournament.new
+    tournament.add_players 'Alexandre', 'Lorène', 'Jean-Luc', 'Sylvain'
+    tournament.add_games 'A', 'B', 'C'
+
+    expected = [
+      [
+        {players:["Alexandre", "Lorène"], game:"A"},
+        {players:["Jean-Luc", "Sylvain"], game:"B"}
+      ],
+      [
+        {players:["Alexandre", "Jean-Luc"], game:"A"},
+        {players:["Lorène", "Sylvain"], game:"B"}
+      ],
+      [
+        {players:["Alexandre", "Sylvain"], game:"A"},
+        {players:["Jean-Luc", "Lorène"], game:"B"}
+      ]
+    ]
+
+
+    assert_equal expected, tournament.get_organization
+  end
+
+
   def test_get_all_fights
-    tournament = TournamentOrganiser::Tournament.new
+    tournament = TournamentOrganizer::Tournament.new
     tournament.add_players 'Alexandre', 'Lorène', 'Jean-Luc'
 
     expected = [
@@ -60,7 +85,7 @@ class TournamentOrganiserTest < Minitest::Test
 
 
   def test_get_fight_for
-    tournament = TournamentOrganiser::Tournament.new
+    tournament = TournamentOrganizer::Tournament.new
     tournament.add_players 'Alexandre', 'Lorène', 'Jean-Luc'
 
     expected = [

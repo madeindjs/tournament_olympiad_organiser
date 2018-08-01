@@ -1,0 +1,24 @@
+PATH
+  remote: .
+  specs:
+    tournament_organizer (0.1.0)
+      highline (~> 2.0)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    highline (2.0.0)
+    minitest (5.11.3)
+    rake (10.5.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  bundler (~> 1.16)
+  minitest (~> 5.0)
+  rake (~> 10.0)
+  tournament_organizer!
+
+BUNDLED WITH
+   1.16.2
