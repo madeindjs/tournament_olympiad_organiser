@@ -1,13 +1,13 @@
 require "test_helper"
 
-class TournamentOlympiadOrganiserTest < Minitest::Test
+class TournamentOrganiserTest < Minitest::Test
   def test_that_it_has_a_version_number
-    refute_nil ::TournamentOlympiadOrganiser::VERSION
+    refute_nil ::TournamentOrganiser::VERSION
   end
 
 
   def test_unique_player
-    tournament = TournamentOlympiadOrganiser::Tournament.new
+    tournament = TournamentOrganiser::Tournament.new
 
     tournament.add_players 'Alexandre', 'Alexandre'
     assert_equal 1, tournament.players.count
@@ -15,7 +15,7 @@ class TournamentOlympiadOrganiserTest < Minitest::Test
 
 
   def test_unique_game
-    tournament = TournamentOlympiadOrganiser::Tournament.new
+    tournament = TournamentOrganiser::Tournament.new
 
     tournament.add_games 'A', 'A'
     assert_equal 1, tournament.games.count
@@ -24,7 +24,7 @@ class TournamentOlympiadOrganiserTest < Minitest::Test
 
   def test_get_organization
 
-    tournament = TournamentOlympiadOrganiser::Tournament.new
+    tournament = TournamentOrganiser::Tournament.new
     tournament.add_players 'Alexandre', 'Lorène', 'Jean-Luc'
     tournament.add_games 'A', 'B'
 
@@ -45,7 +45,7 @@ class TournamentOlympiadOrganiserTest < Minitest::Test
 
 
   def test_get_all_fights
-    tournament = TournamentOlympiadOrganiser::Tournament.new
+    tournament = TournamentOrganiser::Tournament.new
     tournament.add_players 'Alexandre', 'Lorène', 'Jean-Luc'
 
     expected = [
@@ -60,7 +60,7 @@ class TournamentOlympiadOrganiserTest < Minitest::Test
 
 
   def test_get_fight_for
-    tournament = TournamentOlympiadOrganiser::Tournament.new
+    tournament = TournamentOrganiser::Tournament.new
     tournament.add_players 'Alexandre', 'Lorène', 'Jean-Luc'
 
     expected = [

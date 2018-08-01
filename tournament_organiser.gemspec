@@ -1,17 +1,17 @@
 
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "tournament_olympiad_organiser/version"
+require "tournament_organiser/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "tournament_olympiad_organiser"
-  spec.version       = TournamentOlympiadOrganiser::VERSION
+  spec.name          = "tournament_organiser"
+  spec.version       = TournamentOrganiser::VERSION
   spec.authors       = ["Rousseau Alexandre"]
   spec.email         = ["contact@rousseau-alexandre.fr"]
 
   spec.summary       = %q{Organize an olympiad tornament.}
   spec.description   = %q{Organize an olympiad tornament}
-  spec.homepage      = "https://github.com/madeindjs/tournament_olympiad_organiser"
+  spec.homepage      = "https://github.com/madeindjs/tournament_organiser"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'

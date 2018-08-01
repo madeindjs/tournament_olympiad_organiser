@@ -1,4 +1,4 @@
-module TournamentOlympiadOrganiser
+module TournamentOrganiser
   class Tournament
     attr_reader :players, :games
 
