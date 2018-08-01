@@ -1,2 +1,16 @@
+#!/usr/bin/env ruby
+
 require 'tournament_organizer'
 require 'highline'
+require 'awesome_print'
+
+cli = HighLine.new
+players = cli.ask "Enter player separeted by comma `,` and then press enter"
+games = cli.ask "Enter games separeted by comma `,` and then press enter"
+
+
+tournament = TournamentOrganizer::Tournament.new
+tournament.add_players *players.split(',')
+tournament.add_games *games.split(',')
+
+ap tournament.get_organization
