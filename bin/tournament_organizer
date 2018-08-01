@@ -1,16 +1,41 @@
 #!/usr/bin/env ruby
 
 require 'tournament_organizer'
-require 'highline'
-require 'awesome_print'
+require 'optparse'
+require 'yaml'
 
-cli = HighLine.new
-players = cli.ask "Enter player separeted by comma `,` and then press enter"
-games = cli.ask "Enter games separeted by comma `,` and then press enter"
 
 
 tournament = TournamentOrganizer::Tournament.new
-tournament.add_players *players.split(',')
-tournament.add_games *games.split(',')
 
-ap tournament.get_organization
+
+OptionParser.new do |opts|
+	opts.banner = "Usage: tournament_organizer [options]"
+
+  opts.separator ""
+  opts.separator "Specific options:"
+
+  opts.on("-p", "--players PLAYERS", "Players separated by comma `,`") do |players|
+    tournament.add_players *players.split(',')
+  end
+
+  opts.on("-g", "--games GAMES", "Games separated by comma `,`") do |games|
+    tournament.add_games *games.split(',')
+  end
+
+  # opts.on("-o", "--output-format [FORMAT]", "Ouput format", "Can be ") do |format|
+  # end
+
+
+end.parse!
+
+if tournament.players.empty?
+  puts "You must specify players"
+  exit
+elsif tournament.games.empty?
+  puts "You must specify games"
+  exit
+end
+
+
+puts tournament.get_organization.to_yaml
