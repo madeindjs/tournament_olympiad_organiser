@@ -39,7 +39,9 @@ class TournamentOrganizerTest < Minitest::Test
       ]
     ]
 
-    assert_equal expected, tournament.get_organization
+    tournament.get_organization.each_with_index do |round, round_number|
+      assert_equal expected[round_number].count, round.count
+    end
   end
 
 
@@ -64,8 +66,9 @@ class TournamentOrganizerTest < Minitest::Test
       ]
     ]
 
-
-    assert_equal expected, tournament.get_organization
+    tournament.get_organization.each_with_index do |round, round_number|
+      assert_equal expected[round_number].count, round.count
+    end
   end
 
 

@@ -28,7 +28,7 @@ module TournamentOrganizer
         player_on_round = []
 
         # loop on all games
-        @games.map do |game|
+        @games.shuffle.each do |game|
           # quit loop if we use all fights
           break if fights.empty?
 
