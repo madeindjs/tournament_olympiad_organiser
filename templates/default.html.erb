@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tournament</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"/>
+  </head>
+  <body class="container-fluid">
+    <div class="row">
+      <div class="col">
+        <h1>Tournament</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <% @rounds.each_with_index do |round, round_number| %>
+          <h2>Round <%= round_number %></h2>
+            <div class="card-columns">
+              <% round.each do |fight| %>
+                <div class="card text-center border-dark">
+                  <div class="card-header"><%= fight[:game] %></div>
+                  <ul class="list-group list-group-flush">
+                    <% fight[:players].each do |player| %>
+                      <li class="list-group-item"><%= player %></li>
+                    <% end %>
+                  </ul>
+                </div>
+              <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <footer>
+      <small>Created with love by <a href="https://github.com/madeindjs/tournament_organiser">Tournament Organizer</a></small>
+    </footer>
+  </body>
+</html>

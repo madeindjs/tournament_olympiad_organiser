@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Rousseau Alexandre"]
   spec.email         = ["contact@rousseau-alexandre.fr"]
 
-  spec.summary       = %q{Organize an olympiad tornament.}
-  spec.description   = %q{Organize an olympiad tornament}
+  spec.summary       = %q{Organize a tournament.}
+  spec.description   = %q{The goal is to make a tournament where all players play each other on differents games in differents rounds (not a the same time, of course..)}
   spec.homepage      = "https://github.com/madeindjs/tournament_organizer"
   spec.license       = "MIT"
 

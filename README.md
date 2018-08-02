@@ -1,12 +1,9 @@
 # TournamentOrganizer
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/tournament_organizer`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+The goal is to make a **tournament** where all **players** play **each other** on differents **games** in differents **rounds** (not a the same time, of course..)
 
 ## Installation
 
-Add this line to your application's Gemfile:
 
 ```ruby
 gem 'tournament_organizer'
@@ -22,7 +19,23 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+~~~bash
+$ tournament_organizer --games "Foot,Basket" --players "Jean,Yves,Alex"
+---
+- - :players:
+    - Jean
+    - Yves
+    :game: Foot
+- - :players:
+    - Alex
+    - Jean
+    :game: Foot
+- - :players:
+    - Alex
+    - Yves
+    :game: Foot
+~~~
+
 
 ## Development
 

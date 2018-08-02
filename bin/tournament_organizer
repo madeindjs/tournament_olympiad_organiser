@@ -2,16 +2,21 @@
 
 require 'tournament_organizer'
 require 'optparse'
+require 'erb'
 require 'yaml'
+require 'json'
 
 
 
 tournament = TournamentOrganizer::Tournament.new
+output = 'yaml'
 
 
 OptionParser.new do |opts|
 	opts.banner = "Usage: tournament_organizer [options]"
 
+  opts.separator ""
+  opts.separator "The goal is to make a tournament where all players play each other on differents games in differents rounds (not a the same time, of course..)"
   opts.separator ""
   opts.separator "Specific options:"
 
@@ -23,8 +28,9 @@ OptionParser.new do |opts|
     tournament.add_games *games.split(',')
   end
 
-  # opts.on("-o", "--output-format [FORMAT]", "Ouput format", "Can be ") do |format|
-  # end
+  opts.on("-o", "--output-format [FORMAT]", "Ouput format (default is `YAML`)", "Can be `YAML`, `JSON`, `HTML` ") do |format|
+    output = format
+  end
 
 
 end.parse!
@@ -38,4 +44,28 @@ elsif tournament.games.empty?
 end
 
 
-puts tournament.get_organization.to_yaml
+case output
+when 'yaml'
+  puts tournament.get_organization.to_yaml
+when 'json'
+  puts tournament.get_organization.to_json
+when 'html'
+  class ERBContext
+    def initialize(hash)
+      hash.each_pair do |key, value|
+        instance_variable_set('@' + key.to_s, value)
+      end
+    end
+
+    def get_binding
+      binding
+    end
+  end
+
+  context = ERBContext.new({rounds: tournament.get_organization})
+
+  puts ERB.new(File.new("templates/default.html.erb").read).result(context.get_binding)
+end
+  
+
+
