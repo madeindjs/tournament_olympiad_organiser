@@ -64,7 +64,9 @@ when 'html'
 
   context = ERBContext.new({rounds: tournament.get_organization})
 
-  puts ERB.new(File.new("templates/default.html.erb").read).result(context.get_binding)
+  erb_file_path = File.join(File.dirname(File.dirname(__FILE__)),"templates/default.html.erb")
+
+  puts ERB.new(File.new(erb_file_path).read).result(context.get_binding)
 end
   
 
