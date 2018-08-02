@@ -4,6 +4,8 @@ The goal is to make a **tournament** where all **players** play **each other** o
 
 ## Installation
 
+Add this to your Gemfile
+
 
 ```ruby
 gem 'tournament_organizer'
@@ -20,7 +22,7 @@ Or install it yourself as:
 ## Usage
 
 ~~~bash
-$ tournament_organizer --games "Foot,Basket" --players "Jean,Yves,Alex"
+$ tournament_organizer --games "Foot,Basket" --players "Jean,Yves,Alex" --output yaml
 ---
 - - :players:
     - Jean
@@ -35,6 +37,8 @@ $ tournament_organizer --games "Foot,Basket" --players "Jean,Yves,Alex"
     - Yves
     :game: Foot
 ~~~
+
+Output format disponnible are YAML, JSON & HTML. 
 
 
 ## Development
@@ -54,3 +58,8 @@ The gem is available as open source under the terms of the [MIT License](https:/
 ## Code of Conduct
 
 Everyone interacting in the TournamentOrganizer project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/tournament_organizer/blob/master/CODE_OF_CONDUCT.md).
+
+## Todo
+
+- [ ] Add option to set number of player per game
+- [ ] Add Javascript to HTML output to click on winner 
