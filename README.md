@@ -1,5 +1,7 @@
 # TournamentOrganizer
 
+[![Gem Version](https://badge.fury.io/rb/tournament_organizer.svg)](https://rubygems.org/gems/tournament_organizer)
+
 The goal is to make a **tournament** where all **players** play **each other** on differents **games** in differents **rounds** (not a the same time, of course..)
 
 ## Installation
